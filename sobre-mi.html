@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title data-i18n="doc_title">jordicervera.dev | Sobre mí</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&family=Inter:wght@300;400;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    /* ── VARIABLE SYSTEM (Minimalist P3R Palette) ── */
+    :root {
+      --bg-deep: #002244;
+      --bg-mid: #003e72;
+      --bg-light: #0060a3;
+      --accent: #00d9f2;
+      --accent-alt: #e600a0;
+      --white: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.55);
+      --text-dim: rgba(255, 255, 255, 0.35);
+      --text-sub: rgba(255, 255, 255, 0.85);
+      --border-color: rgba(255, 255, 255, 0.15);
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --card-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
+      --timeline-dot: rgba(255, 255, 255, 0.45);
+    }
+
+    /* MODO OSCURO (ABISMO) */
+    :root.dark {
+      --bg-deep: #020617;
+      --bg-mid: #0f172a;
+      --bg-light: #1e293b;
+      --accent: #38bdf8;
+      --accent-alt: #db2777;
+      --white: #f8fafc;
+      --text-muted: rgba(248, 250, 252, 0.4);
+      --text-dim: rgba(248, 250, 252, 0.2);
+      --text-sub: rgba(248, 250, 252, 0.7);
+      --border-color: rgba(248, 250, 252, 0.08);
+      --glass-bg: rgba(0, 0, 0, 0.4);
+      --card-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.4);
+      --timeline-dot: rgba(255, 255, 255, 0.2);
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-deep);
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-deep);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--glass-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* ── P3R AQUATIC BACKGROUND SYSTEM ── */
+    .bg-p3r {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: radial-gradient(circle at 50% -10%, var(--bg-light) 0%, var(--bg-mid) 50%, var(--bg-deep) 100%);
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .bg-p3r::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(130deg, transparent 40%, rgba(255, 255, 255, 0.02) 50%, transparent 60%);
+      background-size: 200% 200%;
+      animation: caustic-flow 25s linear infinite;
+      opacity: 0.3;
+      transition: opacity 0.8s ease;
+    }
+
+    .dark .bg-p3r::before {
+      opacity: 0.01;
+    }
+
+    @keyframes caustic-flow {
+      0% {
+        background-position: 100% 0%;
+      }
+
+      100% {
+        background-position: 0% 100%;
+      }
+    }
+
+    .sun-rays {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-conic-gradient(from 0deg at 50% 0%, transparent 0deg, rgba(255, 255, 255, 0.015) 5deg, transparent 10deg);
+      animation: rotate-rays 90s linear infinite alternate;
+      opacity: 0.8;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+
+    .dark .sun-rays {
+      opacity: 0;
+    }
+
+    @keyframes rotate-rays {
+      0% {
+        transform: rotate(-1deg);
+      }
+
+      100% {
+        transform: rotate(1deg);
+      }
+    }
+
+    .bubbles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .bubble {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      opacity: 0;
+      animation: bubble-float 12s infinite ease-in;
+    }
+
+    .bubble:nth-child(1) {
+      width: 6px;
+      height: 6px;
+      left: 15%;
+      bottom: -20px;
+      animation-delay: 0s;
+    }
+
+    .bubble:nth-child(2) {
+      width: 8px;
+      height: 8px;
+      left: 35%;
+      bottom: -30px;
+      animation-delay: 2s;
+    }
+
+    .bubble:nth-child(3) {
+      width: 5px;
+      height: 5px;
+      left: 60%;
+      bottom: -10px;
+      animation-delay: 5s;
+    }
+
+    .bubble:nth-child(4) {
+      width: 10px;
+      height: 10px;
+      left: 80%;
+      bottom: -40px;
+      animation-delay: 7s;
+    }
+
+    @keyframes bubble-float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 0.15;
+      }
+
+      80% {
+        opacity: 0.15;
+      }
+
+      100% {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .ripples {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.3;
+      transition: opacity 0.8s ease;
+    }
+
+    .dark .ripples {
+      opacity: 0.02;
+    }
+
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      animation: ripple-pulse 10s infinite ease-out;
+    }
+
+    .ripple:nth-child(1) {
+      width: 600px;
+      height: 600px;
+      top: -300px;
+      left: -300px;
+      animation-delay: 0s;
+    }
+
+    .ripple:nth-child(2) {
+      width: 1000px;
+      height: 1000px;
+      top: -500px;
+      left: -500px;
+      animation-delay: 2s;
+    }
+
+    .ripple:nth-child(3) {
+      width: 500px;
+      height: 500px;
+      bottom: -250px;
+      right: -250px;
+      animation-delay: 4s;
+    }
+
+    @keyframes ripple-pulse {
+      0% {
+        transform: scale(0.95);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.05);
+        opacity: 0;
+      }
+    }
+
+    .shapes {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transform-origin: center;
+    }
+
+    .s1 {
+      bottom: -80px;
+      left: -120px;
+      width: 450px;
+      height: 650px;
+      border-radius: 40% 60% 60% 40% / 30% 30% 70% 70%;
+      clip-path: polygon(0 10%, 100% 0, 90% 100%, 10% 90%);
+      animation: rotate-glass 40s infinite linear;
+    }
+
+    .s2 {
+      bottom: -120px;
+      left: 180px;
+      width: 280px;
+      height: 500px;
+      border-radius: 50%;
+      clip-path: polygon(20% 0%, 100% 20%, 80% 100%, 0% 80%);
+      animation: rotate-glass 30s infinite linear reverse;
+    }
+
+    .s3 {
+      top: 5%;
+      right: -50px;
+      width: 250px;
+      height: 400px;
+      border-radius: 30% 70% 30% 70% / 50% 50% 50% 50%;
+      clip-path: polygon(10% 0%, 90% 20%, 100% 80%, 20% 100%);
+      animation: rotate-glass 50s infinite linear;
+    }
+
+    .dark .s1,
+    .dark .s2,
+    .dark .s3 {
+      opacity: 0.1;
+    }
+
+    @keyframes rotate-glass {
+      0% {
+        transform: rotate(0deg)
+      }
+
+      100% {
+        transform: rotate(360deg)
+      }
+    }
+
+    /* ── HEADER & NAVIGATION CONTROLS ── */
+    .header-controls {
+      position: fixed;
+      top: 24px;
+      left: 80px;
+      right: 80px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    /* Back Button - Minimalist & Elegant */
+    .back-btn {
+      background: var(--glass-bg);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid var(--border-color);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .75rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      border-color: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateX(-2px);
+    }
+
+    .right-controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: var(--glass-bg);
+      backdrop-filter: blur(5px);
+      border: 1px solid var(--border-color);
+      color: var(--text-sub);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .theme-toggle .tgl-icon {
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    /* Language Selector */
+    .lang-selector {
+      display: flex;
+      gap: 2px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(5px);
+      border: 1px solid var(--border-color);
+      padding: 3px;
+      border-radius: 4px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 1px;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.15s ease;
+    }
+
+    .lang-btn:hover {
+      color: var(--white);
+    }
+
+    .lang-btn.active {
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--white);
+    }
+
+    /* Corner borders */
+    .corner {
+      position: fixed;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .corner-tl {
+      top: 20px;
+      left: 20px;
+      border-top: 1px solid var(--border-color);
+      border-left: 1px solid var(--border-color);
+      width: 20px;
+      height: 20px;
+    }
+
+    .corner-br {
+      bottom: 20px;
+      right: 20px;
+      border-bottom: 1px solid var(--border-color);
+      border-right: 1px solid var(--border-color);
+      width: 20px;
+      height: 20px;
+    }
+
+    /* Slant Overlay and Slant Bar */
+    .p3-slant-bar {
+      position: fixed;
+      top: 0;
+      left: -300px;
+      width: 300px;
+      height: 100%;
+      background: var(--white);
+      z-index: 3;
+      transform: skewX(-15deg);
+      pointer-events: none;
+      opacity: 0.02;
+      backdrop-filter: blur(5px);
+      transition: left 0.8s ease;
+    }
+
+    .dark .p3-slant-bar {
+      left: 100vw;
+    }
+
+    .slash-overlay {
+      position: fixed;
+      top: -20vh;
+      left: -50vw;
+      width: 250vw;
+      height: 140vh;
+      background: var(--bg-deep);
+      z-index: 10000;
+      pointer-events: none;
+      transform: skewX(-25deg) translateX(-100%);
+      border-right: 2px solid rgba(255, 255, 255, 0.15);
+      border-left: 2px solid rgba(255, 255, 255, 0.15);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+
+    .slash-overlay.active-to-right {
+      animation: wipe-right 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+
+    .slash-overlay.active-to-left {
+      animation: wipe-left 0.6s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+
+    .slash-overlay.active-nav-to-right {
+      animation: wipe-nav-to-right 0.3s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+
+    .slash-overlay.active-nav-to-left {
+      animation: wipe-nav-to-left 0.3s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+
+    .slash-overlay.active-onload-right {
+      animation: wipe-onload-right 0.45s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+
+    .slash-overlay.active-onload-left {
+      animation: wipe-onload-left 0.45s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
+
+    @keyframes wipe-right {
+      0% {
+        transform: skewX(-25deg) translateX(-100%);
+      }
+
+      100% {
+        transform: skewX(-25deg) translateX(100%);
+      }
+    }
+
+    @keyframes wipe-left {
+      0% {
+        transform: skewX(-25deg) translateX(100%);
+      }
+
+      100% {
+        transform: skewX(-25deg) translateX(-100%);
+      }
+    }
+
+    @keyframes wipe-nav-to-right {
+      0% {
+        transform: skewX(-25deg) translateX(-100%);
+      }
+
+      100% {
+        transform: skewX(-25deg) translateX(0%);
+      }
+    }
+
+    @keyframes wipe-nav-to-left {
+      0% {
+        transform: skewX(-25deg) translateX(100%);
+      }
+
+      100% {
+        transform: skewX(-25deg) translateX(0%);
+      }
+    }
+
+    @keyframes wipe-onload-right {
+      0% {
+        transform: skewX(-25deg) translateX(0%);
+      }
+
+      100% {
+        transform: skewX(-25deg) translateX(100%);
+      }
+    }
+
+    @keyframes wipe-onload-left {
+      0% {
+        transform: skewX(-25deg) translateX(0%);
+      }
+
+      100% {
+        transform: skewX(-25deg) translateX(-100%);
+      }
+    }
+
+    /* ── LAYOUT SHELL ── */
+    .shell {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      min-height: 100vh;
+      padding: 90px 80px 60px 80px;
+      display: grid;
+      grid-template-columns: 32% 68%;
+      gap: 50px;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* ── LEFT PROFILE CARD ── */
+    .profile-column {
+      position: sticky;
+      top: 90px;
+      height: calc(100vh - 150px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .profile-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 35px 25px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .profile-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin-bottom: 20px;
+    }
+
+    .avatar-inner {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      background: var(--bg-deep);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s;
+    }
+
+    .profile-card:hover .avatar-inner {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Fallback avatar styling */
+    .avatar-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .profile-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-style: italic;
+      line-height: 1.1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .profile-name span {
+      color: var(--text-sub);
+    }
+
+    .profile-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--border-color);
+      width: 100%;
+      padding-bottom: 15px;
+    }
+
+    /* Minimalist Info List (replacing game HUD) */
+    .profile-info-list {
+      width: 100%;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 25px;
+    }
+
+    .profile-info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .info-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+      font-weight: 700;
+    }
+
+    .info-val {
+      color: var(--white);
+    }
+
+    .profile-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
+
+    /* Clean Buttons */
+    .btn {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--bg-deep);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.65);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255, 255, 255, 0.65);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    /* ── RIGHT CONTENT CONTAINER ── */
+    .details-column {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--white);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      width: 100%;
+      padding-bottom: 8px;
+      margin-bottom: 25px;
+    }
+
+    .glass-panel {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 30px;
+      box-shadow: var(--card-shadow);
+    }
+
+    /* Summary Section */
+    .summary-text {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-sub);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .summary-text strong {
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    /* ── TIMELINE STYLING (Educación y Experiencia) ── */
+    .timeline {
+      position: relative;
+      padding: 10px 0;
+    }
+
+    /* Central timeline vertical line (Desktop) */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Right column timeline cards */
+    .timeline-item.right-side {
+      justify-content: flex-end;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--bg-deep);
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      transform: translateX(-50%);
+      z-index: 10;
+      transition: all 0.2s ease;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+    .timeline-card {
+      position: relative;
+      width: 46%;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 20px;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+
+    .timeline-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .timeline-card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .timeline-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .timeline-card-date {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .timeline-card-desc {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--text-sub);
+    }
+
+    .timeline-card-desc ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .timeline-card-desc li {
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 12px;
+    }
+
+    .timeline-card-desc li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--text-dim);
+    }
+
+    /* ── SKILLS & LANGUAGES ── */
+    .skills-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+
+    .skills-group-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      border-left: 2px solid rgba(255, 255, 255, 0.3);
+      padding-left: 8px;
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      padding: 6px 12px;
+      border-radius: 20px;
+      cursor: default;
+      transition: all 0.15s ease;
+    }
+
+    .skill-tag:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .languages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+    }
+
+    .lang-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color 0.15s;
+    }
+
+    .lang-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .lang-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      font-style: italic;
+      color: var(--white);
+      letter-spacing: 0.5px;
+    }
+
+    .lang-level {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      padding: 3px 6px;
+      border-radius: 3px;
+    }
+
+    /* ── CONTACT CARD ── */
+    .contact-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .contact-desc {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: var(--text-sub);
+      max-width: 600px;
+    }
+
+    .email-copy-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      width: 100%;
+      max-width: 440px;
+      transition: border-color 0.2s;
+    }
+
+    .email-copy-box:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .email-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+      user-select: all;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--white);
+      color: var(--bg-deep);
+      border-color: var(--white);
+    }
+
+    .copy-btn.copied {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: var(--white);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 440px;
+    }
+
+    .social-btn {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-style: italic;
+      letter-spacing: 1px;
+      color: var(--white);
+      padding: 10px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .social-btn:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .social-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1024px) {
+      .shell {
+        grid-template-columns: 1fr;
+        padding-top: 100px;
+      }
+
+      .profile-column {
+        position: relative;
+        top: 0;
+        height: auto;
+        margin-bottom: 10px;
+      }
+
+      .profile-card {
+        padding: 30px 20px;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-dot {
+        left: 20px;
+      }
+
+      .timeline-item {
+        justify-content: flex-end;
+      }
+
+      .timeline-card {
+        width: calc(100% - 30px);
+      }
+    }
+
+    @media(max-width:780px) {
+      .header-controls {
+        left: 20px;
+        right: 20px;
+        top: 20px;
+      }
+
+      .shell {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .theme-toggle {
+        padding: 6px 12px;
+        font-size: 0.55rem;
+      }
+
+      .lang-selector {
+        padding: 2px;
+      }
+
+      .lang-btn {
+        padding: 4px 8px;
+        font-size: 0.55rem;
+      }
+
+      .back-btn {
+        padding: 6px 12px;
+        font-size: 0.55rem;
+      }
+
+      .profile-info-list {
+        font-size: 0.75rem;
+      }
+
+      .social-links {
+        flex-direction: column;
+      }
+
+      .email-copy-box {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .copy-btn {
+        width: 100%;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="p3-slant-bar"></div>
+  <div class="slash-overlay" id="slashOverlay"></div>
+  <script>
+    (function () {
+      const lastDir = localStorage.getItem('nav-dir');
+      if (lastDir) {
+        document.getElementById('slashOverlay').classList.add(lastDir === 'left' ? 'active-onload-left' : 'active-onload-right');
+      }
+    })();
+  </script>
+
+  <!-- P3R background elements -->
+  <div class="bg-p3r">
+    <div class="sun-rays"></div>
+    <div class="bubbles">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+  </div>
+
+  <div class="ripples">
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+  </div>
+
+  <div class="shapes">
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+    <div class="shape s3"></div>
+  </div>
+
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-br"></div>
+
+  <!-- Header Controls -->
+  <div class="header-controls">
+    <a class="back-btn" href="index.html" id="backBtn" data-i18n="back_label">Volver</a>
+
+    <div class="right-controls">
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-btn" data-lang="es">ESP</button>
+        <button class="lang-btn" data-lang="ca">CAT</button>
+        <button class="lang-btn" data-lang="en">ENG</button>
+      </div>
+
+      <button class="theme-toggle" id="themeBtn" aria-label="Cambiar tema">
+        <span class="tgl-icon" id="tglIcon">◑</span>
+        <span id="tglLabel" data-i18n="theme_p3">Modo P3</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Shell -->
+  <main class="shell">
+
+    <!-- Left Column (Profile Summary) -->
+    <aside class="profile-column">
+      <div class="profile-card">
+        <div class="avatar-wrapper">
+          <div class="avatar-inner">
+            <img src="me.jpg" alt="Jordi Cervera" class="avatar-img" id="avatarImg"
+              onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';">
+            <div class="avatar-fallback" id="avatarFallback" style="display: none;">
+              <span>JC</span>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="profile-name">JORDI <span data-i18n="profile_name_last">CERVERA</span></h2>
+        <div class="profile-title" data-i18n="profile_title_job">Técnico Superior en ASIR</div>
+
+        <div class="profile-info-list">
+          <div class="profile-info-item">
+            <span class="info-label" data-i18n="info_label_loc">Ubicación</span>
+            <span class="info-val" data-i18n="hud_loc">Alcanar, ESP</span>
+          </div>
+          <div class="profile-info-item">
+            <span class="info-label" data-i18n="info_label_email">Contacto</span>
+            <span class="info-val">jcerverapallares@gmail.com</span>
+          </div>
+        </div>
+
+        <div class="profile-actions">
+          <a href="mycv.pdf" download="Jordi_Cervera_CV.pdf" class="btn btn-primary">
+            <span data-i18n="btn_cv">Descargar CV</span>
+          </a>
+          <a href="#contacto" class="btn btn-secondary" id="contactBtn">
+            <span data-i18n="btn_contact">Contacto</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Right Column (Core Details) -->
+    <section class="details-column">
+
+      <!-- Sobre Mí -->
+      <div class="glass-panel" id="resumen-seccion">
+        <h3 class="section-title" data-i18n="sec_about">Sobre mí</h3>
+        <div class="summary-text" id="summaryContainer">
+          <!-- Populated by JS translations -->
+        </div>
+      </div>
+
+      <!-- Educación -->
+      <div class="glass-panel">
+        <h3 class="section-title" data-i18n="sec_education">Educación</h3>
+        <div class="timeline" id="educationTimeline">
+          <!-- Timeline items populated dynamically by JS translations -->
+        </div>
+      </div>
+
+      <!-- Experiencia -->
+      <div class="glass-panel">
+        <h3 class="section-title" data-i18n="sec_experience">Experiencia</h3>
+        <div class="timeline" id="experienceTimeline">
+          <!-- Timeline items populated dynamically by JS translations -->
+        </div>
+      </div>
+
+      <!-- Habilidades e Idiomas -->
+      <div class="glass-panel">
+        <h3 class="section-title" data-i18n="sec_skills">Habilidades y Lenguas</h3>
+        <div class="skills-container">
+          <div>
+            <h4 class="skills-group-title" data-i18n="skill_group_sys">Sistemas y Soporte</h4>
+            <div class="skills-grid" id="skillsSysGrid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+          <div>
+            <h4 class="skills-group-title" data-i18n="skill_group_tools">Herramientas y DevOps</h4>
+            <div class="skills-grid" id="skillsToolsGrid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+          <div>
+            <h4 class="skills-group-title" data-i18n="skill_group_langs">Idiomas</h4>
+            <div class="languages-grid" id="langsGrid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contacto -->
+      <div class="glass-panel" id="contacto">
+        <h3 class="section-title" data-i18n="sec_contact">Contacto</h3>
+        <div class="contact-container">
+          <p class="contact-desc" data-i18n="contact_desc">
+            Si deseas ponerte en contacto conmigo, puedes enviarme un correo electrónico o encontrarme en LinkedIn o
+            GitHub.
+          </p>
+
+          <div class="email-copy-box">
+            <span class="email-text">jcerverapallares@gmail.com</span>
+            <button class="copy-btn" id="copyEmailBtn" data-i18n="btn_copy">Copiar</button>
+          </div>
+
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/jordi-cervera-pallares-9728ba349/" target="_blank" rel="noopener"
+              class="social-btn">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+              LinkedIn
+            </a>
+            <a href="https://github.com/jordicerv/" target="_blank" rel="noopener" class="social-btn">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    const translations = {
+      es: {
+        doc_title: "jordicervera.dev | Sobre mí",
+        back_label: "Volver",
+        theme_p3: "Modo P3",
+        theme_dark: "Modo oscuro",
+        profile_name_last: "CERVERA",
+        profile_title_job: "Técnico Superior en ASIR",
+        hud_loc: "Alcanar, ESP",
+        hud_active: "ACTIVO // LISTO",
+        info_label_loc: "Ubicación",
+        info_label_email: "Contacto",
+        btn_cv: "Descargar CV",
+        btn_contact: "Contacto",
+        sec_about: "Sobre mí",
+        sec_education: "Educación",
+        sec_experience: "Experiencia",
+        sec_skills: "Habilidades y Lenguas",
+        sec_contact: "Contacto",
+        skill_group_sys: "Sistemas y Soporte",
+        skill_group_tools: "Herramientas y DevOps",
+        skill_group_langs: "Idiomas",
+        contact_desc: "Si deseas ponerte en contacto conmigo, puedes enviarme un correo electrónico o encontrarme en LinkedIn o GitHub.",
+        btn_copy: "Copiar",
+        btn_copied: "¡Copiado!",
+
+        // About descriptions
+        about_p1: "Administrador de sistemas, redes e infraestructura IT con experiencia práctica en entornos exigentes. Me impulsa la resolución de problemas complejos y el aprendizaje constante, adaptándome rápidamente a nuevas tecnologías y entornos de trabajo.",
+        about_p2: "Técnico informático recién titulado en <strong>ASIX</strong>. Además de montar y reparar hardware, poseo experiencia práctica real de soporte informático en entornos públicos (ayuntamientos) y atención directa al cliente en tienda. Destaco por mi capacidad de comunicación directa con personas no técnicas, sabiendo escuchar y explicar la tecnología de forma clara y accesible. Soy proactivo, resolutivo y me adapto rápido a equipos dinámicos.",
+
+        // Skills lists
+        skills_sys: [
+          "Soporte Técnico de Sistemas",
+          "Montaje y Reparación de Hardware",
+          "Instalación de SO (Windows/Linux)",
+          "Redes Locales (LAN/VLAN)",
+          "Configuración de Seguridad (Firewalls, VPN)",
+          "Atención al Cliente y Mostrador",
+          "Asesoramiento Técnico y Ventas"
+        ],
+        skills_tools: [
+          "Proxmox VE",
+          "Docker Engine",
+          "Python 3",
+          "Shell Scripting (Bash/Powershell)",
+          "Microsoft Azure Cloud",
+          "Git / GitHub",
+          "Nextcloud",
+          "Vaultwarden"
+        ],
+        langs: [
+          { name: "Catalán", level: "Nativo" },
+          { name: "Español", level: "Nativo" },
+          { name: "Inglés", level: "B1 (Cambridge)" }
+        ],
+
+        // Timelines
+        education_items: [
+          { title: "FP Superior Administración de Sistemas Informáticos en Red (ASIR)", meta: "IES Montsià", date: "Septiembre 2024 - Mayo 2026", desc: "Formación especializada en administración de sistemas, configuración de redes corporativas, administración de bases de datos y seguridad informática con perfil en Ciberseguridad." },
+          { title: "Certificado Python 3", meta: "OpenWebinars", date: "Noviembre 2023", desc: "Desarrollo de lógica de programación en Python, estructuras de datos, modularización y automatización de tareas." },
+          { title: "FP Medio Sistemas Informáticos y Redes (SMR)", meta: "IES Montsià", date: "Septiembre 2022 - Julio 2024", desc: "Bases sólidas de montaje y reparación de ordenadores, configuración de redes locales cableadas e inalámbricas, y soporte técnico ofimático." },
+          { title: "Certificado Microsoft Azure", meta: "Dublín, Irlanda", date: "2022", desc: "Curso intensivo internacional de 7 días sobre fundamentos de la nube de Azure, redes virtuales e infraestructura en la nube." }
+        ],
+        experience_items: [
+          {
+            title: "Técnico de Sistemas y Hardware (Prácticas)",
+            meta: "Ajuntament de Tortosa",
+            date: "Junio 2025 - Noviembre 2025",
+            desc: [
+              "Resolución de incidencias técnicas del día a día y soporte directo en las sedes municipales.",
+              "Diagnóstico avanzado y reparación física de hardware (módulos de RAM, discos duros y placas madre).",
+              "Preparación y puesta en marcha de equipos informáticos mediante scripts y montaje de entornos virtuales en Proxmox VE.",
+              "Revisión y mantenimiento del inventario web junto con el etiquetado físico de los equipos."
+            ]
+          },
+          {
+            title: "Dependiente / Atención al Cliente",
+            meta: "Supermercat 24 horas Alcanar",
+            date: "Julio 2025 - Agosto 2025",
+            desc: [
+              "Atención directa al cliente, resolución de cobros y gestión de caja de alta velocidad.",
+              "Configuración y recarga de cuentas virtuales, así como soporte de primer nivel en servicios digitales de la tienda.",
+              "Control diario de stock, recepción de mercancías y optimización del espacio de tienda."
+            ]
+          },
+          {
+            title: "Técnico Microinformático (Prácticas)",
+            meta: "Ajuntament d'Alcanar",
+            date: "Junio 2023 - Octubre 2023",
+            desc: [
+              "Creación e implementación desde cero de un inventario completo para la auditoría de los dispositivos electrónicos de todas las delegaciones locales.",
+              "Mantenimiento preventivo y correctivo de equipos de oficina, impresoras, red y periféricos.",
+              "Revisiones rutinarias e instalación de software específico en sedes descentralizadas (Biblioteca municipal, Servicios Sociales, Servicios Agrícolas, etc.)."
+            ]
+          }
+        ]
+      },
+      ca: {
+        doc_title: "jordicervera.dev | Sobre mi",
+        back_label: "Tornar",
+        theme_p3: "Mode P3",
+        theme_dark: "Mode fosc",
+        profile_name_last: "CERVERA",
+        profile_title_job: "Tècnic Superior en ASIR",
+        hud_loc: "Alcanar, ESP",
+        hud_active: "ACTIU // LLEST",
+        info_label_loc: "Ubicació",
+        info_label_email: "Contacte",
+        btn_cv: "Descarregar CV",
+        btn_contact: "Contacte",
+        sec_about: "Sobre mi",
+        sec_education: "Educació",
+        sec_experience: "Experiència",
+        sec_skills: "Habilitats i Llengües",
+        sec_contact: "Contacte",
+        skill_group_sys: "Sistemes i Suport",
+        skill_group_tools: "Eines i DevOps",
+        skill_group_langs: "Idiomes",
+        contact_desc: "Si vols posar-te en contacte amb mi, pots enviar-me un correu electrònic o trobar-me a LinkedIn o GitHub.",
+        btn_copy: "Copiar",
+        btn_copied: "¡Copiat!",
+
+        about_p1: "Administrador de sistemes, xarxes i infraestructura IT amb experiència pràctica en entorns exigents. Em motiva la resolució de problemes complexos i l'aprenentatge constant, adaptant-me ràpidament a noves tecnologies i entorns de treball.",
+        about_p2: "Tècnic informàtic acabat de titular en <strong>ASIX</strong>. A més de muntar i reparar maquinari, tinc experiència pràctica real de suport informàtic en entorns públics (ajuntaments) i atenció directa al client a botigues. Destaco per la meva capacitat de comunicació amb persones no tècniques, sabent escoltar i explicar la tecnologia de forma clara i propera. Sóc resolutiu i m'integro ràpidament en equips de treball dinàmics.",
+
+        skills_sys: [
+          "Suport Tècnic de Sistemes",
+          "Muntatge i Reparació de Maquinari",
+          "Instal·lació de SO (Windows/Linux)",
+          "Xarxes Locals (LAN/VLAN)",
+          "Configuració de Seguretat (Firewalls, VPN)",
+          "Atenció al Client i Mostrador",
+          "Assessorament Tècnic i Vendes"
+        ],
+        skills_tools: [
+          "Proxmox VE",
+          "Docker Engine",
+          "Python 3",
+          "Shell Scripting (Bash/Powershell)",
+          "Microsoft Azure Cloud",
+          "Git / GitHub",
+          "Nextcloud",
+          "Vaultwarden"
+        ],
+        langs: [
+          { name: "Català", level: "Natiu" },
+          { name: "Espanyol", level: "Natiu" },
+          { name: "Anglès", level: "B1 (Cambridge)" }
+        ],
+
+        education_items: [
+          { title: "FP Superior Administració de Sistemes Informàtics en Xarxa (ASIX)", meta: "IES Montsià", date: "Setembre 2024 - Maig 2026", desc: "Formació especialitzada en administració de sistemes, configuració de xarxes corporatives, administració de bases de dades i seguretat informàtica amb perfil de Ciberseguretat." },
+          { title: "Certificat Python 3", meta: "OpenWebinars", date: "Novembre 2023", desc: "Desenvolupament de lògica de programació en Python, estructures de dades, modularització i automatització de tasques." },
+          { title: "FP Mitjà Sistemes Informàtics i Xarxes (SMX)", meta: "IES Montsià", date: "Setembre 2022 - Juliol 2024", desc: "Bases sòlides de muntatge i reparació d'ordinadors, configuració de xarxes locals amb cable i sense, i suport tècnic ofimàtic." },
+          { title: "Curs d'Introducció a la Programació amb Pseudocodi", meta: "OpenWebinars", date: "Febrer 2023", desc: "Desenvolupament de lògica algorísmica i estructures de control bàsiques." },
+          { title: "Certificat Microsoft Azure", meta: "Dublín, Irlanda", date: "2022", desc: "Curs intensiu internacional de 7 dies sobre fonaments del núvol de Azure, xarxes virtuals i infraestructura al núvol." }
+        ],
+        experience_items: [
+          {
+            title: "Tècnic de Sistemes i Maquinari (Pràctiques)",
+            meta: "Ajuntament de Tortosa",
+            date: "Juny 2025 - Novembre 2025",
+            desc: [
+              "Resolució d'incidències tècniques de l'estat diari i suport directe a les diferents seus municipals.",
+              "Diagnòstic avançat i reparació física de maquinari (mòduls de RAM, discs durs i plaques base).",
+              "Preparació i posada en marxa d'equips informàtics mitjançant scripts i muntatge d'entorns virtuals amb Proxmox VE.",
+              "Revisió i actualització de l'inventari web i etiquetatge físic dels equips."
+            ]
+          },
+          {
+            title: "Depenent / Atenció al Client",
+            meta: "Supermercat 24 hores Alcanar",
+            date: "Juliol 2025 - Agost 2025",
+            desc: [
+              "Atenció directa al client, resolució de cobraments i gestió de caixa ràpida.",
+              "Configuració i recàrrega de comptes virtuals i serveis digitals integrats de la botiga.",
+              "Control d'estoc, recepció de comandes de mercaderies i manteniment de l'espai de venda."
+            ]
+          },
+          {
+            title: "Tècnic Microinformàtic (Pràctiques)",
+            meta: "Ajuntament d'Alcanar",
+            date: "Juny 2023 - Octubre 2023",
+            desc: [
+              "Creació completament des de zero de l'inventari digital de control per a auditar els dispositius electrònics de totes les dependències del municipi.",
+              "Manteniment bàsic dels equips d'oficina, impressores, xarxa i perifèrics.",
+              "Revisions periòdiques de control de sistemes a delegacions externes (Biblioteca, Serveis Socials, Serveis Agrícoles, etc.)."
+            ]
+          }
+        ]
+      },
+      en: {
+        doc_title: "jordicervera.dev | About me",
+        back_label: "Back",
+        theme_p3: "P3 Mode",
+        theme_dark: "Dark Mode",
+        profile_name_last: "CERVERA",
+        profile_title_job: "ASIX Systems Administrator",
+        hud_loc: "Alcanar, ESP",
+        hud_active: "ACTIVE // READY",
+        info_label_loc: "Location",
+        info_label_email: "Contact",
+        btn_cv: "Download CV",
+        btn_contact: "Contact",
+        sec_about: "About me",
+        sec_education: "Education",
+        sec_experience: "Experience",
+        sec_skills: "Skills & Languages",
+        sec_contact: "Contact",
+        skill_group_sys: "Systems & Support",
+        skill_group_tools: "Tools & DevOps",
+        skill_group_langs: "Languages",
+        contact_desc: "If you wish to contact me, you can send me an email or find me on LinkedIn or GitHub.",
+        btn_copy: "Copy",
+        btn_copied: "Copied!",
+
+        about_p1: "Systems, networks and IT infrastructure administrator with practical experience in demanding environments. I am driven by solving complex problems and continuous learning, quickly adapting to new technologies and work environments.",
+        about_p2: "IT support technician recently graduated in <strong>ASIX</strong> (Network Computer Systems Administration). Besides setting up and repairing hardware, I have hands-on experience in providing technical support in municipal public environments and direct customer service. I stand out for my communication skills with non-technical users, knowing how to listen and explain technologies in a clear and jargon-free way. I am proactive, detail-oriented, and easily adapt to team routines.",
+
+        skills_sys: [
+          "Technical Systems Support",
+          "Hardware Assembly & Repair",
+          "OS Installation (Windows/Linux)",
+          "Local Networks (LAN/VLAN)",
+          "Security Config (Firewalls, VPN)",
+          "Customer Service & Front Counter",
+          "Technical Sales Advisory"
+        ],
+        skills_tools: [
+          "Proxmox VE Virtualization",
+          "Docker Engine",
+          "Python 3 Programming",
+          "Shell Scripting (Bash/Powershell)",
+          "Microsoft Azure Cloud",
+          "Git / GitHub",
+          "Nextcloud Self-hosting",
+          "Vaultwarden Password Manager"
+        ],
+        langs: [
+          { name: "Catalan", level: "Native" },
+          { name: "Spanish", level: "Native" },
+          { name: "English", level: "B1 (Cambridge Cert.)" }
+        ],
+
+        education_items: [
+          { title: "Advanced Vocational Training (CFGS) in Network Computer Systems Administration (ASIR)", meta: "IES Montsià", date: "September 2024 - May 2026", desc: "Specialized training in systems administration, corporate network configurations, database management, and computer security, focused on Cybersecurity." },
+          { title: "Python 3 Certificate", meta: "OpenWebinars", date: "November 2023", desc: "Development of core programming logic in Python, data structures, modularization, and script-based automation." },
+          { title: "Intermediate Vocational Training (CFGM) in Microcomputer Systems and Networks (SMR)", meta: "IES Montsià", date: "September 2022 - July 2024", desc: "Solid foundation in computer hardware repair, local network setup (wired/wireless), and technical office support." },
+          { title: "Introduction to Programming with Pseudocode Course", meta: "OpenWebinars", date: "February 2023", desc: "Algorithmic thinking and basic code structure logic." },
+          { title: "Microsoft Azure Certificate", meta: "Dublin, Ireland", date: "2022", desc: "Intensive 7-day international course on Azure cloud basics, virtual networking, and basic cloud instances administration." }
+        ],
+        experience_items: [
+          {
+            title: "Systems and Hardware Technician (Internship)",
+            meta: "Ajuntament de Tortosa (City Hall)",
+            date: "June 2025 - November 2025",
+            desc: [
+              "Daily technical troubleshooting and direct desktop support across municipal offices.",
+              "Advanced diagnosis and physical repairs of hardware components (RAM modules, hard drives, and motherboards).",
+              "Deployment and provisioning of computer systems via custom scripting and server virtualization in Proxmox VE.",
+              "Updating database web registries of devices and physically tagging municipal hardware."
+            ]
+          },
+          {
+            title: "Sales Assistant / Customer Support",
+            meta: "Alcanar 24h Convenience Store",
+            date: "July 2025 - August 2025",
+            desc: [
+              "Direct customer service, register operation, and fast payment cash flow processing.",
+              "Setting up, reloading online accounts, and resolving basic digital service issues on in-store systems.",
+              "Stock control, checking incoming orders, and optimizing product merchandising layouts."
+            ]
+          },
+          {
+            title: "Microcomputer Support Technician (Internship)",
+            meta: "Ajuntament d'Alcanar (City Hall)",
+            date: "June 2023 - October 2023",
+            desc: [
+              "Created and compiled from scratch a complete web device directory audit of all computers, servers, and hardware across local delegation offices.",
+              "Routine preventive maintenance on office systems, printers, network switches, and accessories.",
+              "Regular software configuration audits at municipal extensions (Local Library, Social Services, Agriculture Department, etc.)."
+            ]
+          }
+        ]
+      }
+    };
+
+    // Global translation rendering helper
+    function renderContent(lang) {
+      // 1. Render Bio Paragraphs
+      const summaryContainer = document.getElementById('summaryContainer');
+      if (summaryContainer) {
+        summaryContainer.innerHTML = `
+          <p>${translations[lang].about_p1}</p>
+          <p>${translations[lang].about_p2}</p>
+        `;
+      }
+
+      // 2. Render Skills Tags (Systems)
+      const skillsSysGrid = document.getElementById('skillsSysGrid');
+      if (skillsSysGrid) {
+        skillsSysGrid.innerHTML = translations[lang].skills_sys
+          .map(skill => `<span class="skill-tag">${skill}</span>`)
+          .join('');
+      }
+
+      // 3. Render Skills Tags (Tools)
+      const skillsToolsGrid = document.getElementById('skillsToolsGrid');
+      if (skillsToolsGrid) {
+        skillsToolsGrid.innerHTML = translations[lang].skills_tools
+          .map(tool => `<span class="skill-tag">${tool}</span>`)
+          .join('');
+      }
+
+      // 4. Render Languages Card List
+      const langsGrid = document.getElementById('langsGrid');
+      if (langsGrid) {
+        langsGrid.innerHTML = translations[lang].langs
+          .map(l => `
+            <div class="lang-card">
+              <span class="lang-name">${l.name}</span>
+              <span class="lang-level">${l.level}</span>
+            </div>
+          `).join('');
+      }
+
+      // 5. Render Education Timeline
+      const eduTimeline = document.getElementById('educationTimeline');
+      if (eduTimeline) {
+        eduTimeline.innerHTML = translations[lang].education_items
+          .map((item, idx) => {
+            const sideClass = (idx % 2 === 0) ? '' : 'right-side';
+            return `
+              <div class="timeline-item ${sideClass}">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                  <h4 class="timeline-card-title">${item.title}</h4>
+                  <div class="timeline-card-meta">
+                    <span class="timeline-card-org">${item.meta}</span>
+                    <span class="timeline-card-date">${item.date}</span>
+                  </div>
+                  <p class="timeline-card-desc">${item.desc}</p>
+                </div>
+              </div>
+            `;
+          }).join('');
+      }
+
+      // 6. Render Experience Timeline
+      const expTimeline = document.getElementById('experienceTimeline');
+      if (expTimeline) {
+        expTimeline.innerHTML = translations[lang].experience_items
+          .map((item, idx) => {
+            const sideClass = (idx % 2 === 0) ? '' : 'right-side';
+            const bulletItems = item.desc.map(line => `<li>${line}</li>`).join('');
+            return `
+              <div class="timeline-item ${sideClass}">
+                <div class="timeline-dot"></div>
+                <div class="timeline-card">
+                  <h4 class="timeline-card-title">${item.title}</h4>
+                  <div class="timeline-card-meta">
+                    <span class="timeline-card-org">${item.meta}</span>
+                    <span class="timeline-card-date">${item.date}</span>
+                  </div>
+                  <div class="timeline-card-desc">
+                    <ul>${bulletItems}</ul>
+                  </div>
+                </div>
+              </div>
+            `;
+          }).join('');
+      }
+    }
+
+    // ── THEME TOGGLE & STATE MANAGEMENT ──
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const tglIcon = document.getElementById('tglIcon');
+    const tglLabel = document.getElementById('tglLabel');
+    let isP3Theme = localStorage.getItem('theme') !== 'dark';
+
+    function applyTheme(isInit = false) {
+      const currentLang = localStorage.getItem('lang') || 'es';
+      if (!isP3Theme) {
+        root.classList.add('dark');
+        if (tglIcon) tglIcon.textContent = '☀';
+        if (tglLabel) tglLabel.textContent = translations[currentLang][isP3Theme ? 'theme_p3' : 'theme_dark'];
+      } else {
+        root.classList.remove('dark');
+        if (tglIcon) tglIcon.textContent = '◑';
+        if (tglLabel) tglLabel.textContent = translations[currentLang]['theme_p3'];
+      }
+      if (!isInit) localStorage.setItem('theme', isP3Theme ? 'p3' : 'dark');
+    }
+    applyTheme(true);
+
+    themeBtn.addEventListener('click', () => {
+      const slash = document.getElementById('slashOverlay');
+      const animClass = isP3Theme ? 'active-to-right' : 'active-to-left';
+
+      slash.classList.remove('active-to-right', 'active-to-left');
+      void slash.offsetWidth;
+      slash.classList.add(animClass);
+
+      setTimeout(() => {
+        isP3Theme = !isP3Theme;
+        applyTheme();
+      }, 300);
+
+      setTimeout(() => {
+        slash.classList.remove(animClass);
+      }, 800);
+    });
+
+    // ── LANGUAGE MANAGER ──
+    function applyLanguage(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+      document.querySelectorAll('#langSelector .lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      // Re-render JS lists with active language
+      renderContent(lang);
+      applyTheme(true);
+    }
+
+    document.querySelectorAll('#langSelector .lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyLanguage(btn.getAttribute('data-lang'));
+      });
+    });
+
+    // On Load Wipe
+    window.addEventListener('DOMContentLoaded', () => {
+      const lastDir = localStorage.getItem('nav-dir');
+      if (lastDir) {
+        const animClass = lastDir === 'left' ? 'active-onload-left' : 'active-onload-right';
+        setTimeout(() => {
+          const slash = document.getElementById('slashOverlay');
+          if (slash) slash.classList.remove(animClass);
+          localStorage.removeItem('nav-dir');
+        }, 750);
+      }
+    });
+
+    // ── NAV TRANSITIONS ──
+    function navigateWithTransition(url, direction = 'right') {
+      const slash = document.getElementById('slashOverlay');
+      const animClass = direction === 'left' ? 'active-nav-to-left' : 'active-nav-to-right';
+      slash.classList.add(animClass);
+      localStorage.setItem('nav-dir', direction);
+      setTimeout(() => { window.location.href = url; }, 300);
+    }
+
+    const backBtn = document.getElementById('backBtn');
+    backBtn.addEventListener('click', e => {
+      e.preventDefault();
+      navigateWithTransition(backBtn.getAttribute('href'), 'left');
+    });
+
+    // Contact smooth scroll
+    const contactBtn = document.getElementById('contactBtn');
+    contactBtn.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.getElementById('contacto');
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+
+    // ── EMAIL COPY TO CLIPBOARD ──
+    const copyEmailBtn = document.getElementById('copyEmailBtn');
+    copyEmailBtn.addEventListener('click', () => {
+      const email = 'jcerverapallares@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        copyEmailBtn.classList.add('copied');
+        const currentLang = localStorage.getItem('lang') || 'es';
+        copyEmailBtn.textContent = translations[currentLang].btn_copied || '¡Copiado!';
+
+        setTimeout(() => {
+          copyEmailBtn.classList.remove('copied');
+          copyEmailBtn.textContent = translations[currentLang].btn_copy || 'Copiar';
+        }, 2000);
+      }).catch(err => {
+        console.error('No se pudo copiar el texto: ', err);
+      });
+    });
+
+    // Init with correct language (default ES)
+    applyLanguage(localStorage.getItem('lang') || 'es');
+  </script>
+</body>
+
+</html>
